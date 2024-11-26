@@ -1,39 +1,46 @@
-public class Permanent implements ContractBuilder {
-    private String ContractID;
-    private String RentAmountID;
-    private String TenantID;
-    private String PropertyID;
+public class Permanent implements Contract {
+    private int ContractID;
+    private int RentAmountID;
+    private int TenantID;
+    private int PropertyID;
 
-    public Permanent(String contractID, String rentAmountID, String tenantID, String propertyID) {
-        ContractID = contractID;
-        RentAmountID = rentAmountID;
-        TenantID = tenantID;
-        PropertyID = propertyID;
+    public Permanent(int contractID, int rentAmountID, int tenantID, int propertyID) {
+        this.ContractID = contractID;
+        this.RentAmountID = rentAmountID;
+        this.TenantID = tenantID;
+        this.PropertyID = propertyID;
     }
 
     @Override
-    public void BuildContractID(String ContractID) {
-        this.ContractID = ContractID;
+    public int BuildContractID() {
+        return ContractID;
     }
 
     @Override
-    public void BuildPropertyID(String PropertyID) {
-        this.PropertyID = PropertyID;
+    public int BuildPropertyID() {
+        return PropertyID;
     }
 
     @Override
-    public void BuildTenantID(String TenantID) {
-        this.TenantID = TenantID;
+    public int BuildTenantID() {
+        return TenantID;
     }
 
     @Override
-    public void BuildRentAmountID(String RentAmountID) {
-        this.RentAmountID = RentAmountID;
+    public int BuildRentAmountID() {
+        return RentAmountID;
     }
 
     @Override
     public Contract SignContract() {
-        return new Contract(ContractID, RentAmountID, TenantID, PropertyID);
+        Contract permanent = new Permanent(this.ContractID, this.RentAmountID, this.TenantID, this.PropertyID);
+        return permanent;
+    }
+
+    @Override
+    public String toString() {
+        return "Permanent [ContractID=" + ContractID + ", RentAmountID=" + RentAmountID + ", TenantID=" + TenantID
+                + ", PropertyID=" + PropertyID + "]";
     }
 
 }
