@@ -20,5 +20,28 @@ public class Client {
         System.out.println(longterm.toString());
         shortTerm.SignContract();
         System.out.println(shortTerm.toString());
+
+        // Document
+        String encryption = sc.nextLine();
+        String extension = sc.nextLine();
+
+        switch (extension) {
+            case ".txt" -> {
+                Document nor = new NormalDoc();
+                nor.SetEncryption(encryption);
+                nor.SetExtension();
+                Document dc = nor.BuilDocument();
+                System.out.println(dc);
+            }
+
+            case ".zip" -> {
+                Document confi = new ConfidentialDoc();
+                confi.SetEncryption(encryption);
+                confi.SetExtension();
+                Document dc = confi.BuilDocument();
+                System.out.println(dc);
+            }
+            default -> throw new AssertionError();
+        }
     }
 }
